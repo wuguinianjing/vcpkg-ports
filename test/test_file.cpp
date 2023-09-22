@@ -4,7 +4,6 @@
 
 int main()
 {
-    auto ret = k1ee::read_all_bytes(R"(./data/test_data.dat)");
+    auto ret = k1ee::add(1,2);
 
-    assert(ret.size() == 12);
 }

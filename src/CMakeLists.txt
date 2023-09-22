@@ -24,15 +24,17 @@ install(TARGETS k1ee
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
-    "${PROJECT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake"
+    "${PROJECT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.in"
     "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
     INSTALL_DESTINATION lib/cmake/${PROJECT_NAME}
 )
 
 install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+        COMPONENT "${PROJECT_NAME}"
         DESTINATION lib/cmake/${PROJECT_NAME})
 
 install(
   EXPORT ${TARGETS_EXPORT_NAME} 
+  NAMESPACE ${PROJECT_NAME}::
   DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
 )
